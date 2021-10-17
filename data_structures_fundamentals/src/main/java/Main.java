@@ -1,11 +1,11 @@
 import linear_data_structures.impl.ArrayList;
+import linear_data_structures.impl.DoublyLinkedList;
 import linear_data_structures.impl.Queue;
 import linear_data_structures.impl.Stack;
 import linear_data_structures.interfaces.AbstractQueue;
 import linear_data_structures.interfaces.AbstractStack;
+import linear_data_structures.interfaces.LinkedList;
 import linear_data_structures.interfaces.List;
-
-import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -57,20 +57,34 @@ public class Main {
         laptopBrands.offer("Lenovo");
         laptopBrands.offer("Razer");
         laptopBrands.offer("Dell");
-
-        System.out.println(laptopBrands.size());
-        System.out.println(laptopBrands.peek());
-        System.out.println();
-
         laptopBrands.offer("Alien Ware");
-        System.out.println(laptopBrands.poll());
-        System.out.println();
+
+        laptopBrands.poll();
+        laptopBrands.poll();
+        laptopBrands.poll();
+        laptopBrands.poll();
+
+        laptopBrands.offer("fdsfds");
+        System.out.println(laptopBrands.size());
 
         for (String brand : laptopBrands) {
             System.out.println(brand);
         }
 */
 
-        LinkedList<String> linkedList = new LinkedList<>();
+        LinkedList<Integer> numbers = new DoublyLinkedList<>();
+        numbers.addFirst(10);
+        numbers.addLast(20);
+        numbers.addLast(30);
+        numbers.addFirst(5);
+
+        numbers.remove(20);
+
+
+        for (Integer number : numbers) {
+            System.out.println(number);
+        }
+
+
     }
 }

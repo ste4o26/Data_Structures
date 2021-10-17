@@ -4,10 +4,11 @@ import linear_data_structures.interfaces.List;
 
 import java.util.Iterator;
 
+import static error_messages.ListErrorMessages.ELEMENT_CANNOT_BE_NULL;
+import static error_messages.ListErrorMessages.OUT_OF_BOUNDS_ERROR_MESSAGE;
+
 public class ArrayList<T> implements List<T> {
     private static final int INITIAL_CAPACITY = 4;
-    private static final String ELEMENT_CAN_NOT_BE_NULL = "Element can not be null!";
-    private static final String OUT_OF_BOUNDS_ERROR_MESSAGE = "Position %d for list with size %d is invalid!";
     private Object[] elements;
     private int size;
 
@@ -24,7 +25,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     private void ensureElementNotNull(T element) {
-        if (element == null) throw new IllegalArgumentException(ELEMENT_CAN_NOT_BE_NULL);
+        if (element == null) throw new IllegalArgumentException(ELEMENT_CANNOT_BE_NULL);
     }
 
     private boolean hasEnoughCapacity() {

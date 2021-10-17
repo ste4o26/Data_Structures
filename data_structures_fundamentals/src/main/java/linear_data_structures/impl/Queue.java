@@ -5,6 +5,9 @@ import linear_data_structures.utils.Node;
 
 import java.util.Iterator;
 
+import static error_messages.QueueErrorMessages.ELEMENT_CANNOT_BE_NULL;
+import static error_messages.QueueErrorMessages.OPERATION_CANNOT_BE_EXECUTED_ON_EMPTY_QUEUE;
+
 public class Queue<T> implements AbstractQueue<T> {
     private int size;
     private Node<T> head;
@@ -18,14 +21,14 @@ public class Queue<T> implements AbstractQueue<T> {
 
 
     private void ensureElementNotNull(T element) {
-        if (element == null) throw new IllegalArgumentException("Element can not be null.");
+        if (element == null) throw new IllegalArgumentException(ELEMENT_CANNOT_BE_NULL);
     }
 
     private void ensureNotEmpty() {
-        if (this.isEmpty()) throw new IllegalStateException("Can not execute this operation on empty queue!");
+        if (this.isEmpty()) throw new IllegalStateException(OPERATION_CANNOT_BE_EXECUTED_ON_EMPTY_QUEUE);
     }
 
-    private void offerNodeIQueueIsEmpty(Node<T> node) {
+    private void offerNodeIfQueueIsEmpty(Node<T> node) {
         if (!this.isEmpty()) return;
         this.head = node;
         this.tail = node;
@@ -43,19 +46,27 @@ public class Queue<T> implements AbstractQueue<T> {
         this.ensureElementNotNull(element);
         Node<T> node = new Node<>(element);
 
-        this.offerNodeIQueueIsEmpty(node);
+        this.offerNodeIfQueueIsEmpty(node);
         this.offerNodeIfQueueNotEmpty(node);
 
         this.size++;
         return true;
     }
 
+    /**
+     * Whenever poll is called and the size of the queue is 1
+     * line 62 "this.head = nodeToBeDeleted.getNext();"
+     * set the head to null because the next element is null
+     * because there is no next element since the size is 1
+     */
     @Override
     public T poll() {
         this.ensureNotEmpty();
 
         Node<T> nodeToBeDeleted = this.head;
         this.head = nodeToBeDeleted.getNext();
+
+        if (this.size() == 1) this.tail = null;
 
         T deletedElement = nodeToBeDeleted.getData();
         nodeToBeDeleted = null;

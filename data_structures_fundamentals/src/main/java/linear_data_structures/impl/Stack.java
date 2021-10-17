@@ -5,6 +5,9 @@ import linear_data_structures.utils.Node;
 
 import java.util.Iterator;
 
+import static error_messages.StackErrorMessages.ELEMENT_CANNOT_BE_NULL;
+import static error_messages.StackErrorMessages.OPERATION_CANNOT_BE_EXECUTED_ON_EMPTY_STACK;
+
 public class Stack<T> implements AbstractStack<T> {
     private Node<T> top;
     private int size;
@@ -26,7 +29,7 @@ public class Stack<T> implements AbstractStack<T> {
     }
 
     private void ensureElementNotNull(T element) {
-        if (element == null) throw new IllegalArgumentException("Element can not be null!");
+        if (element == null) throw new IllegalArgumentException(ELEMENT_CANNOT_BE_NULL);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class Stack<T> implements AbstractStack<T> {
 
     @Override
     public T pop() {
-        if (this.isEmpty()) throw new IllegalStateException("Can NOT pop element/s from empty stack!");
+        if (this.isEmpty()) throw new IllegalStateException(OPERATION_CANNOT_BE_EXECUTED_ON_EMPTY_STACK);
 
         Node<T> currentTopElement = this.top;
         this.top = this.top.getNext();

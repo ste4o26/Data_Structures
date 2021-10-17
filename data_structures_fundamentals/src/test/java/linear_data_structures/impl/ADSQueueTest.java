@@ -64,5 +64,4 @@ class ADSQueueTest {
         String actual = this.laptopsBrands.poll();
         assertEquals("Lenovo", actual);
     }
-
 }
