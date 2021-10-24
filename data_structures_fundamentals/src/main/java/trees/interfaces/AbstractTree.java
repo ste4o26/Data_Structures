@@ -12,7 +12,7 @@ public interface AbstractTree<T> {
 
     boolean addChild(T parentKey, Tree<T> child);
 
-    T removeNode(T key);
+    T removeByKey(T key);
 
-    void swap(T firstKey, T secondKey);
+    void swapByKeys(T firstKey, T secondKey);
 }
