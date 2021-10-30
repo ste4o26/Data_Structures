@@ -11,6 +11,8 @@ public interface AbstractTree<T> {
 
     void addChild(Tree<T> child);
 
+    List<Tree<T>> getChildren();
+
     String getAsString();
 
     List<T> getLeafKeys();
@@ -19,7 +21,9 @@ public interface AbstractTree<T> {
 
     Tree<T> getDeepestLeftmostNode();
 
-    List<List<T>> pathsWithGivenSum();
+    List<T> longestPath();
+
+    List<List<T>> pathsWithGivenSum(int sum);
 
     List<Tree<T>> subTreesByGivenSum(int sum);
 }
