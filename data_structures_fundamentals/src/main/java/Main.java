@@ -6,6 +6,8 @@ import linear_data_structures.interfaces.AbstractQueue;
 import linear_data_structures.interfaces.AbstractStack;
 import linear_data_structures.interfaces.LinkedList;
 import linear_data_structures.interfaces.List;
+import trees.impl.MaxHeap;
+import trees.interfaces.Heap;
 
 public class Main {
     public static void main(String[] args) {
@@ -72,19 +74,31 @@ public class Main {
         }
 */
 
-        LinkedList<Integer> numbers = new DoublyLinkedList<>();
-        numbers.addFirst(10);
-        numbers.addLast(20);
-        numbers.addLast(30);
-        numbers.addFirst(5);
+//        LinkedList<Integer> numbers = new DoublyLinkedList<>();
+//        numbers.addFirst(10);
+//        numbers.addLast(20);
+//        numbers.addLast(30);
+//        numbers.addFirst(5);
+//
+//        numbers.remove(20);
+//
+//
+//        for (Integer number : numbers) {
+//            System.out.println(number);
+//        }
 
-        numbers.remove(20);
+        Heap<Integer> heap = new MaxHeap<>();
+        heap.add(5);
+        heap.add(4);
+        heap.add(1);
+        heap.add(3);
+        heap.add(2);
+        heap.add(6);
+        heap.add(25);
 
-
-        for (Integer number : numbers) {
+        for (Integer number : heap) {
             System.out.println(number);
         }
-
 
     }
 }
